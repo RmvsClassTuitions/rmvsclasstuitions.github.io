@@ -3,95 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMVS Class Tuitions | Daily Quiz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <title>RMVS Classes | Daily Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --neon-cyan: #00f3ff; --neon-pink: #bc13fe; --bg-dark: #050505; --panel-bg: rgba(20, 20, 20, 0.85); }
-        body { background-color: var(--bg-dark); background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px; color: #fff; font-family: 'Roboto Mono', monospace; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        /* --- MODERN ED-TECH THEME --- */
+        :root {
+            --primary: #4361ee; /* Royal Blue */
+            --secondary: #3f37c9;
+            --accent: #f72585; /* Pink/Red for highlights */
+            --success: #4cc9f0;
+            --bg-color: #f8f9fa; /* Light Gray Background */
+            --card-bg: #ffffff;
+            --text-dark: #2b2d42;
+            --shadow: 0 10px 20px rgba(0,0,0,0.08);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* Nav Bar - Sticky & White */
+        nav {
+            background: var(--card-bg);
+            width: 100%;
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;
+            position: sticky; top: 0; z-index: 100;
+        }
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 50px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            background: #f1f3f5;
+        }
+        nav a:hover, nav a.active {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        /* Main Container */
+        .container {
+            margin-top: 30px;
+            max-width: 700px;
+            width: 90%;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            border: 1px solid #eee;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        /* Quiz Styles - Card Look */
+        .question-block {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-left: 5px solid var(--accent);
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+        .question-block:hover { transform: translateY(-3px); }
+        .question-block h3 { margin-top: 0; color: var(--text-dark); font-size: 1.1rem; }
+
+        .options label {
+            display: block;
+            padding: 12px 15px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+        .options label:hover {
+            border-color: var(--primary);
+            background: #eef2ff;
+        }
+        input[type="radio"] { margin-right: 10px; accent-color: var(--primary); }
+
+        /* Buttons */
+        button#submit-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.3);
+            transition: 0.3s;
+        }
+        button#submit-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 25px rgba(67, 97, 238, 0.4); }
+
+        /* Results & Feedback */
+        .explanation {
+            background: #e0fbfc;
+            border-left: 4px solid var(--success);
+            color: #0077b6;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none; /* Hidden by default */
+        }
+        #result {
+            text-align: center;
+            padding: 30px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin-top: 20px;
+            display: none;
+            border: 2px solid var(--success);
+        }
+
+        /* Footer & Visitor Counter */
+        .brand-footer {
+            margin-top: 60px;
+            padding: 40px;
+            background: #fff;
+            text-align: center;
+            width: 100%;
+            border-top: 1px solid #eee;
+            color: #6c757d;
+        }
+        #live-counter-bar {
+            position: fixed;
+            bottom: 20px; /* Moved to bottom left */
+            left: 20px;
+            background: #fff;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex; align-items: center;
+            z-index: 999;
+            border: 1px solid #eee;
+        }
+        .pulse-dot { height: 10px; width: 10px; background-color: #2ec4b6; border-radius: 50%; display: inline-block; margin-right: 8px; animation: pulse 2s infinite; }
         
-        /* Nav & Container */
-        nav { width: 95%; max-width: 800px; display: flex; justify-content: center; gap: 10px; margin-top: 60px; flex-wrap: wrap; }
-        nav a { color: var(--neon-cyan); text-decoration: none; font-family: 'Orbitron'; border: 1px solid var(--neon-cyan); padding: 8px 15px; border-radius: 5px; background: rgba(0, 243, 255, 0.1); font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
-        
-        .container { margin-top: 20px; max-width: 700px; width: 90%; background: var(--panel-bg); backdrop-filter: blur(10px); border: 1px solid #333; border-radius: 15px; padding: 30px; box-shadow: 0 0 20px rgba(0, 243, 255, 0.1); }
-        h1 { font-family: 'Orbitron'; text-align: center; color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); margin-bottom: 30px; border-bottom: 2px solid var(--neon-cyan); padding-bottom: 10px; font-size: 1.8rem; }
-        
-        /* Quiz Styles */
-        .question-block { background: rgba(255, 255, 255, 0.05); border-left: 3px solid var(--neon-pink); margin-bottom: 25px; padding: 20px; border-radius: 0 10px 10px 0; }
-        .options label { display: block; padding: 10px 15px; margin: 8px 0; background: rgba(0, 0, 0, 0.3); border: 1px solid #444; border-radius: 5px; cursor: pointer; }
-        input[type="radio"] { margin-right: 10px; accent-color: var(--neon-cyan); }
-        .explanation { background: rgba(0, 255, 0, 0.1); border-left: 3px solid #00ff00; color: #ccffcc; margin-top: 15px; padding: 10px; animation: fadeIn 0.5s; }
-        #result { text-align: center; padding: 20px; border: 2px solid var(--neon-cyan); background: rgba(0, 243, 255, 0.1); border-radius: 10px; margin-top: 20px; display: none; }
-        button#submit-btn { display: block; width: 100%; padding: 15px; font-family: 'Orbitron'; font-size: 1.2rem; color: var(--bg-dark); background: var(--neon-cyan); border: none; border-radius: 5px; cursor: pointer; font-weight: bold; box-shadow: 0 0 15px var(--neon-cyan); }
-        
-        /* Footer & Extras */
-        .ad-space { width: 90%; max-width: 700px; height: 100px; background: rgba(255, 255, 255, 0.05); border: 1px dashed #555; display: flex; align-items: center; justify-content: center; color: #555; margin: 20px 0; }
-        .brand-footer { margin-top: 50px; padding: 40px 20px; background: rgba(10, 10, 10, 0.9); border-top: 2px solid var(--neon-cyan); text-align: center; width: 100%; }
-        .float-whatsapp { position: fixed; width: 60px; height: 60px; bottom: 25px; right: 25px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse-green 2s infinite; }
-        
-        /* Social Proof Styles */
-        #live-counter-bar { position: fixed; top: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.8); border: 1px solid var(--neon-cyan); padding: 5px 15px; border-radius: 20px; font-family: 'Orbitron'; font-size: 0.9rem; z-index: 1000; display: flex; align-items: center; backdrop-filter: blur(5px); }
-        .pulse-dot { height: 8px; width: 8px; background-color: #ff0055; border-radius: 50%; display: inline-block; margin-right: 8px; box-shadow: 0 0 5px #ff0055; animation: blink 1.5s infinite; }
-        #fomo-popup { position: fixed; bottom: 20px; left: 20px; background: rgba(15, 15, 15, 0.95); border-left: 4px solid var(--neon-pink); padding: 15px; border-radius: 5px; display: flex; align-items: center; width: 280px; z-index: 9999; font-family: 'Roboto Mono'; transform: translateX(-150%); transition: transform 0.5s; }
+        /* Popup Notifications */
+        #fomo-popup {
+            position: fixed;
+            bottom: 80px; /* Above the counter */
+            left: 20px;
+            background: #fff;
+            border-left: 5px solid var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex; align-items: center; width: 280px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transform: translateX(-150%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
         #fomo-popup.show { transform: translateX(0); }
-        #fomo-image { width: 40px; height: 40px; background: #222; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-size: 1.2rem; color: var(--neon-cyan); border: 1px solid #333; }
-        
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.4;} 100% {opacity: 1;} }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        #fomo-image { font-size: 1.5rem; margin-right: 15px; }
+
+        .float-whatsapp {
+            position: fixed; bottom: 25px; right: 25px;
+            width: 60px; height: 60px;
+            background-color: #25d366; color: #FFF;
+            border-radius: 50%;
+            text-align: center; font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            display: flex; align-items: center; justify-content: center;
+            transition: 0.3s;
+        }
+        .float-whatsapp:hover { transform: scale(1.1); }
+        .ad-space { width: 90%; max-width: 700px; height: 100px; background: #eee; display: flex; align-items: center; justify-content: center; color: #aaa; margin: 20px 0; border-radius: 10px; }
+
+        @keyframes pulse { 0% {box-shadow: 0 0 0 0 rgba(46, 196, 182, 0.7);} 70% {box-shadow: 0 0 0 10px rgba(46, 196, 182, 0);} 100% {box-shadow: 0 0 0 0 rgba(46, 196, 182, 0);} }
     </style>
 </head>
 <body>
 
-    <div id="live-counter-bar"><span class="pulse-dot"></span><span style="color:#fff;">LIVE: </span><span id="visitor-count" style="margin-left:5px; color:var(--neon-cyan); font-weight:bold;">1,240</span></div>
-
     <nav>
-        <a href="index.html" style="background:var(--neon-cyan); color:#000;">QUIZ</a>
-        <a href="store.html">STORE</a>
-        <a href="freenotes.html">NOTES</a>
-        <a href="about.html">ABOUT</a>
+        <a href="index.html" class="active">📝 Quiz</a>
+        <a href="store.html">🛍️ Store</a>
+        <a href="freenotes.html">📚 Notes</a>
+        <a href="about.html">🏫 About</a>
     </nav>
 
-    <div class="ad-space">[GOOGLE AD SPACE 1]</div>
+    <div class="ad-space">[GOOGLE AD SPACE]</div>
 
     <div class="container">
-        <h1>RMVS Class Tuitions</h1>
-        <div id="quiz-container"><p style="text-align:center; color: var(--neon-cyan);">Initializing Daily Quiz...</p></div>
-        <button id="submit-btn">Execute Submit</button>
+        <h1>RMVS Daily Practice 🧠</h1>
+        <div id="quiz-container"><p style="text-align:center; color: #888;">Loading Today's Questions...</p></div>
+        <button id="submit-btn">Submit Answers</button>
         <div id="result"></div>
     </div>
 
-    <div class="ad-space">[GOOGLE AD SPACE 2]</div>
+    <div class="ad-space">[GOOGLE AD SPACE]</div>
+
+    <div id="live-counter-bar">
+        <span class="pulse-dot"></span>
+        <span style="font-weight:600; color:#333;">Live Students: </span>
+        <span id="visitor-count" style="margin-left:5px; color:var(--primary); font-weight:700;">1,240</span>
+    </div>
+
+    <div id="fomo-popup">
+        <div id="fomo-image"></div>
+        <div style="line-height:1.2">
+            <span id="fomo-name" style="font-weight:700; font-size:0.9rem; color:#333;"></span><br>
+            <span id="fomo-action" style="font-size:0.8rem; color:#666;"></span>
+        </div>
+    </div>
+
+    <a href="https://wa.me/919506760791" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <footer class="brand-footer">
-        <div style="font-family:'Orbitron'; font-size:1.5rem; color:#fff;">RMVS Class Tuitions</div>
-        <div class="social-icons" style="margin-top:10px;">
-            <a href="https://instagram.com/rmvsclasstuitions" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/rmvsclasstuitions" target="_blank"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/919506760791" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <h2 style="color:var(--primary); margin:0;">RMVS Class Tuitions</h2>
+        <p style="margin:5px 0;">Excellence in Education | Lakhimpur Kheri</p>
+        <div style="margin-top:20px;">
+            <a href="#" style="color:#E1306C; font-size:1.5rem; margin:0 10px;"><i class="fab fa-instagram"></i></a>
+            <a href="#" style="color:#FF0000; font-size:1.5rem; margin:0 10px;"><i class="fab fa-youtube"></i></a>
         </div>
-        <div style="color:var(--neon-cyan); margin-top:10px;"><i class="fas fa-phone-alt"></i> +91 95067 60791</div>
-        <p style="color:#555; font-size:0.7rem; margin-top:20px;">&copy; 2026 RMVS Class Tuitions. Lakhimpur Kheri.</p>
+        <p style="font-size:0.8rem; margin-top:20px;">&copy; 2026 RMVS Tuitions.</p>
     </footer>
-
-    <div id="fomo-popup"><div id="fomo-image"></div><div id="fomo-text"><span id="fomo-name" style="font-weight:bold; color:var(--neon-cyan);"></span><br><span id="fomo-action" style="font-size:0.8rem; color:#ccc;"></span><br><span style="font-size:0.7rem; color:#888;">Just now</span></div></div>
-    <a href="https://wa.me/919506760791?text=Hello%20RMVS%20Classes,%20I%20want%20to%20join." class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script src="script.js"></script>
     <script>
-        // VISITOR LOGIC
+        // Counter Logic
         let count = localStorage.getItem('rmvs_cnt') || 1240;
         count = parseInt(count) + Math.floor(Math.random()*10) + 3;
         document.getElementById('visitor-count').innerText = count.toLocaleString();
         localStorage.setItem('rmvs_cnt', count);
         setInterval(() => { count++; document.getElementById('visitor-count').innerText = count.toLocaleString(); }, 15000);
 
-        // POPUP LOGIC
-        const names = ["Aman","Priya","Rahul","Sneha","Arif","Kavita","Arjun","Simran","Vikas","Anjali","Rohan","Neha"];
-        const locs = ["Civil Lines","Gola Road","Naurangabad","Rajgarh","Melani","Palia","Kheri Town","LRP Road"];
-        const acts = [{t:"started Quiz",i:"fas fa-play-circle",c:"#00f3ff"},{t:"bought Science Notes",i:"fas fa-shopping-cart",c:"#00ff00"},{t:"viewing Class 10 Bundle",i:"fas fa-eye",c:"#bc13fe"}];
+        // Popup Logic
+        const names = ["Aman","Priya","Rahul","Sneha","Arif","Kavita","Arjun","Simran","Vikas","Anjali"];
+        const locs = ["Civil Lines","Gola Road","Naurangabad","Rajgarh","Melani"];
+        const acts = [{t:"started the Quiz",i:"fas fa-pen",c:"#4361ee"},{t:"bought Physics Notes",i:"fas fa-check-circle",c:"#2ec4b6"},{t:"is reading Notes",i:"fas fa-book-open",c:"#f72585"}];
 
         function showPopup(){
             const rN=names[Math.floor(Math.random()*names.length)], rL=locs[Math.floor(Math.random()*locs.length)], rA=acts[Math.floor(Math.random()*acts.length)];
@@ -101,7 +271,7 @@
             document.getElementById('fomo-popup').classList.add('show');
             setTimeout(()=>document.getElementById('fomo-popup').classList.remove('show'), 4000);
         }
-        setTimeout(()=>{ showPopup(); setInterval(showPopup, 9000); }, 3000);
+        setTimeout(()=>{ showPopup(); setInterval(showPopup, 8000); }, 3000);
     </script>
 </body>
 </html>
