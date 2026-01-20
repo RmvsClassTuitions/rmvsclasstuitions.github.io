@@ -4,103 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RMVS Store</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Shared Styles */
-        :root { --neon-cyan: #00f3ff; --neon-pink: #bc13fe; --bg-dark: #050505; --panel-bg: rgba(20, 20, 20, 0.85); }
-        body { background-color: var(--bg-dark); background-image: linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px); background-size: 30px 30px; color: #fff; font-family: 'Roboto Mono', monospace; margin: 0; padding: 0; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        /* Modern Theme Reused */
+        :root { --primary: #4361ee; --secondary: #3f37c9; --bg-color: #f8f9fa; --card-bg: #ffffff; --text-dark: #2b2d42; --shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        body { background-color: var(--bg-color); color: var(--text-dark); font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
         
-        nav { width: 95%; max-width: 800px; display: flex; justify-content: center; gap: 10px; margin-top: 60px; flex-wrap: wrap; }
-        nav a { color: var(--neon-cyan); text-decoration: none; font-family: 'Orbitron'; border: 1px solid var(--neon-cyan); padding: 8px 15px; border-radius: 5px; background: rgba(0, 243, 255, 0.1); font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
+        nav { background: var(--card-bg); width: 100%; padding: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 15px; position: sticky; top: 0; z-index: 100; }
+        nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; padding: 8px 18px; border-radius: 50px; transition: 0.3s; font-size: 0.9rem; background: #f1f3f5; }
+        nav a:hover, nav a.active { background: var(--primary); color: #fff; transform: translateY(-2px); }
 
-        h1 { font-family: 'Orbitron'; color: var(--neon-cyan); margin-top: 30px; text-shadow: 0 0 10px var(--neon-cyan); }
-        .product-card { background: var(--panel-bg); border: 1px solid var(--neon-cyan); border-radius: 10px; padding: 20px; margin: 15px 0; max-width: 600px; width: 90%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 0 10px rgba(0, 243, 255, 0.1); }
-        .price-container { text-align: right; display: flex; flex-direction: column; align-items: flex-end; }
-        .original-price { color: #888; text-decoration: line-through; font-size: 0.9rem; }
-        .current-price { color: #00ff00; font-size: 1.5rem; font-weight: bold; font-family: 'Orbitron'; text-shadow: 0 0 5px #00ff00; }
-        .discount-badge { background: #ff0055; color: white; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; }
-        button.buy-btn { background: var(--neon-cyan); color: #000; border: none; padding: 10px 20px; font-family: 'Orbitron'; cursor: pointer; font-weight: bold; margin-top: 5px; box-shadow: 0 0 10px var(--neon-cyan); }
+        h1 { color: var(--primary); margin-top: 40px; font-weight: 700; }
+
+        /* Store Card Style */
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            max-width: 600px;
+            width: 90%;
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: var(--shadow);
+            border: 1px solid #f1f3f5;
+            transition: 0.3s;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
+        .product-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #333; }
+        .product-card p { margin: 0; color: #666; font-size: 0.9rem; }
+
+        .price-container { text-align: right; }
+        .original-price { color: #aaa; text-decoration: line-through; font-size: 0.9rem; margin-right: 5px; }
+        .current-price { color: var(--primary); font-size: 1.4rem; font-weight: 700; }
         
-        #payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; z-index: 100; }
-        .modal-content { background: #111; border: 2px solid var(--neon-cyan); padding: 30px; text-align: center; border-radius: 15px; max-width: 400px; width: 90%; box-shadow: 0 0 30px var(--neon-cyan); }
+        button.buy-btn {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            font-family: 'Poppins';
+            transition: 0.2s;
+        }
+        button.buy-btn:hover { background: var(--secondary); transform: scale(1.05); }
+
+        /* Badge */
+        .discount-badge { background: #ef233c; color: white; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; vertical-align: middle; margin-left: 5px; }
+
+        /* Modal */
+        #payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 200; }
+        .modal-content { background: #fff; padding: 40px; text-align: center; border-radius: 20px; max-width: 400px; width: 85%; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
         
-        .brand-footer { margin-top: 50px; padding: 40px 20px; background: rgba(10, 10, 10, 0.9); border-top: 2px solid var(--neon-cyan); text-align: center; width: 100%; }
-        .float-whatsapp { position: fixed; width: 60px; height: 60px; bottom: 25px; right: 25px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 3px #999; z-index: 100; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse-green 2s infinite; }
-        
-        @keyframes pulse-green { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .float-whatsapp { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+        .float-whatsapp:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="index.html">QUIZ</a>
-        <a href="store.html" style="background:var(--neon-cyan); color:#000;">STORE</a>
-        <a href="freenotes.html">NOTES</a>
-        <a href="about.html">ABOUT</a>
+        <a href="index.html">📝 Quiz</a>
+        <a href="store.html" class="active">🛍️ Store</a>
+        <a href="freenotes.html">📚 Notes</a>
+        <a href="about.html">🏫 About</a>
     </nav>
 
-    <h1>RMVS Store</h1>
+    <h1>Study Material Store</h1>
 
     <div class="product-card">
         <div>
             <h3>Physics Formula Sheet <span class="discount-badge">HOT</span></h3>
-            <p>1-Page Formula Summary (PDF)</p>
+            <p>Complete Class 12 Formulas (PDF)</p>
         </div>
         <div class="price-container">
-            <span class="original-price">₹99</span>
-            <span class="current-price">₹29</span>
-            <button class="buy-btn" onclick="openPayment('Physics Sheet', 29)">ACQUIRE</button>
+            <div><span class="original-price">₹99</span><span class="current-price">₹29</span></div>
+            <button class="buy-btn" onclick="openPayment('Physics Sheet', 29)">Buy Now</button>
         </div>
     </div>
 
     <div class="product-card">
         <div>
-            <h3>Class 12 Complete Bundle</h3>
-            <p>Physics + Chem + Maths Notes</p>
+            <h3>PCM Complete Bundle</h3>
+            <p>Physics + Chemistry + Maths Notes</p>
         </div>
         <div class="price-container">
-            <span class="original-price">₹499</span>
-            <span class="current-price">₹99</span>
-            <button class="buy-btn" onclick="openPayment('PCM Bundle', 99)">ACQUIRE</button>
+            <div><span class="original-price">₹499</span><span class="current-price">₹99</span></div>
+            <button class="buy-btn" onclick="openPayment('PCM Bundle', 99)">Buy Now</button>
         </div>
     </div>
 
     <div id="payment-modal">
         <div class="modal-content">
-            <h2 style="color:var(--neon-cyan)">Confirm Transaction</h2>
-            <p>Scan to pay via Any UPI App</p>
-            <img id="qr-code-img" src="" width="200" height="200" style="border:5px solid white; margin:10px 0;">
-            <p id="pay-amount" style="color:var(--neon-pink); font-size:1.2rem;"></p>
-            <button class="buy-btn" style="background:#25D366; color:white; width:100%;" onclick="openWhatsApp()">Step 2: Send Screenshot</button>
-            <button onclick="document.getElementById('payment-modal').style.display='none'" style="background:transparent; color:#888; border:none; margin-top:15px; cursor:pointer;">Close</button>
+            <h2 style="color:var(--primary)">Confirm Order</h2>
+            <p style="color:#666;">Scan via Paytm / PhonePe / GPay</p>
+            <img id="qr-code-img" src="" width="200" height="200" style="border:10px solid #f8f9fa; border-radius:10px; margin:10px 0;">
+            <p id="pay-amount" style="font-weight:bold; font-size:1.2rem; margin:10px 0;"></p>
+            <button class="buy-btn" style="background:#25D366; width:100%; padding:15px;" onclick="openWhatsApp()">Step 2: Send Screenshot</button>
+            <button onclick="document.getElementById('payment-modal').style.display='none'" style="background:transparent; color:#999; border:none; margin-top:15px; cursor:pointer;">Cancel</button>
         </div>
     </div>
 
-    <footer class="brand-footer">
-        <div style="font-family:'Orbitron'; font-size:1.5rem; color:#fff;">RMVS Class Tuitions</div>
-        <div style="margin-top:10px;">
-            <a href="https://instagram.com/" target="_blank" style="color:#fff; font-size:1.5rem; margin:0 10px;"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/" target="_blank" style="color:#fff; font-size:1.5rem; margin:0 10px;"><i class="fab fa-youtube"></i></a>
-        </div>
-        <span style="color:var(--neon-pink); font-size:0.8rem; display:block; margin-top:20px; font-weight:bold;">⚠ TERMS: No Refunds. Files sent via WhatsApp within 2-4 hours.</span>
-    </footer>
-
-    <a href="https://wa.me/919506760791?text=I%20have%20an%20enquiry" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/919506760791" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script>
-        // --- CONFIGURATION ---
-        const upiID = "rmv009@oksbi"; // REPLACE THIS
-        const myWhatsApp = "919506760791"; // REPLACE THIS
-        // ---------------------
-
+        const upiID = "rmv009@oksbi"; 
+        const myWhatsApp = "919506760791"; 
         let currentProduct = "";
         function openPayment(productName, amount) {
             currentProduct = productName;
             const upiLink = `upi://pay?pa=${upiID}&pn=RMVS_Classes&am=${amount}&tn=${productName}`;
             document.getElementById('qr-code-img').src = `https://quickchart.io/qr?text=${encodeURIComponent(upiLink)}&size=300`;
-            document.getElementById('pay-amount').innerText = `Amount: ₹${amount}`;
+            document.getElementById('pay-amount').innerText = `Pay: ₹${amount}`;
             document.getElementById('payment-modal').style.display = 'flex';
         }
         function openWhatsApp() {
