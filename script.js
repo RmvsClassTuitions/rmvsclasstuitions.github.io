@@ -41,29 +41,22 @@ function calculateScore(questions) {
         const selected = document.querySelector(`input[name="question${index}"]:checked`);
         const explanationDiv = document.getElementById(`explanation-${index}`);
         const block = document.getElementById(`q-block-${index}`);
-        
         explanationDiv.style.display = 'block';
 
         if (selected && selected.value === q.answer) {
             score++;
-            block.style.border = "2px solid #00ff00"; // Neon Green
+            block.style.border = "2px solid #00ff00"; 
             explanationDiv.style.color = "#fff";
         } else {
-            block.style.border = "2px solid #ff0055"; // Neon Red
+            block.style.border = "2px solid #ff0055"; 
             explanationDiv.style.color = "#fff";
         }
-        
         document.querySelectorAll(`input[name="question${index}"]`).forEach(i => i.disabled = true);
     });
 
     const resultDiv = document.getElementById('result');
     resultDiv.style.display = 'block';
-    resultDiv.innerHTML = `
-        <h2>Daily Status Report</h2>
-        <p style="font-size:1.2rem">Accuracy: <strong>${score} / ${questions.length}</strong></p>
-        <button onclick="location.reload()" style="margin-top:10px">Re-Initialize System</button>
-    `;
-    
+    resultDiv.innerHTML = `<h2>Status Report</h2><p style="font-size:1.2rem">Accuracy: <strong>${score} / ${questions.length}</strong></p><button onclick="location.reload()" style="margin-top:10px">Re-Initialize</button>`;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.getElementById('submit-btn').style.display = 'none';
 }
