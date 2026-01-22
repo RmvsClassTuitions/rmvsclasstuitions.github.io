@@ -3,23 +3,30 @@ let allQuestions = [];
 async function loadQuiz() {
     try {
         const response = await fetch('questions.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         allQuestions = await response.json();
         
-        // START WITH SCIENCE BY DEFAULT (Instead of 'all')
+        // START WITH SCIENCE BY DEFAULT
         renderQuiz('science');
 
     } catch (error) {
-        document.getElementById('quiz-container').innerHTML = "<p style='color:red'>Error loading questions. Check JSON file.</p>";
+        console.error("Error:", error);
+        document.getElementById('quiz-container').innerHTML = "<p style='color:red; text-align:center;'>Error loading questions. Please check if questions.json file exists and has correct syntax.</p>";
     }
 }
 
 function filterSubject(subject) {
+    // 1. Highlight Active Button
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
         if(btn.innerText.toLowerCase() === subject) {
             btn.classList.add('active');
         }
     });
+
+    // 2. Load Questions
     renderQuiz(subject);
 }
 
@@ -31,7 +38,7 @@ function renderQuiz(subject) {
     const filteredQuestions = allQuestions.filter(q => q.subject === subject);
 
     if(filteredQuestions.length === 0) {
-        quizContainer.innerHTML = "<p style='text-align:center; padding:20px; color:#888;'>No questions added for " + subject.toUpperCase() + " yet.</p>";
+        quizContainer.innerHTML = "<p style='text-align:center; padding:20px; color:#888;'>No questions found for " + subject.toUpperCase() + ". Add them in questions.json</p>";
         document.getElementById('submit-btn').style.display = 'none';
         return;
     }
