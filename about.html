@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #4361ee; --secondary: #3f37c9; --bg-color: #f8f9fa; --card-bg: #ffffff; }
+        :root { --primary: #4361ee; --bg-color: #f8f9fa; --card-bg: #ffffff; }
         body { background-color: var(--bg-color); color: #333; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
         
         nav { background: #fff; width: 100%; padding: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 15px; position: sticky; top: 0; z-index: 100; }
@@ -16,58 +16,37 @@
 
         .hero { text-align: center; margin-top: 40px; width: 90%; max-width: 800px; }
         h1 { color: var(--primary); font-weight: 700; margin-bottom: 5px; }
-        
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 90%; max-width: 800px; margin-bottom: 50px; margin-top: 30px; }
         .service-card { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
         .service-card:hover { transform: translateY(-5px); }
-        .service-card i { font-size: 2rem; color: var(--primary); margin-bottom: 10px; }
-        
         .review-card { background: #fff; padding: 20px; margin-bottom: 15px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 90%; max-width: 600px; border-left: 5px solid #FFD700; }
         .stars { color: #FFD700; margin-bottom: 5px; }
-        
-        .float-whatsapp { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-        .float-whatsapp:hover { transform: scale(1.1); }
+        .float-whatsapp { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 <body>
-
     <nav>
         <a href="index.html">📝 Quiz</a>
         <a href="store.html">🛍️ Store</a>
         <a href="freenotes.html">📚 Notes</a>
         <a href="about.html" class="active">🏫 About</a>
     </nav>
-
     <div class="hero">
         <h1>RMVS Class Tuitions</h1>
         <p style="color:#666; font-weight:600;"><i class="fas fa-map-marker-alt" style="color:#ef233c;"></i> Lakhimpur Kheri, UP</p>
-        <p style="color:#555; margin-top:20px; line-height:1.6;">The most trusted coaching center for <strong>Class Nursery to 12th</strong>. <br>We build toppers with personalized attention in Physics, Chemistry & Maths.</p>
     </div>
-
     <div class="services-grid">
-        <div class="service-card">
-            <i class="fas fa-child"></i>
-            <h3>Junior Wing</h3>
-            <p>Nursery to 8th</p>
-        </div>
-        <div class="service-card">
-            <i class="fas fa-graduation-cap"></i>
-            <h3>Senior Wing</h3>
-            <p>9th to 12th (PCM/PCB)</p>
-        </div>
+        <div class="service-card"><i class="fas fa-child" style="font-size:2rem; color:#4361ee;"></i><h3>Junior Wing</h3><p>Nursery to 8th</p></div>
+        <div class="service-card"><i class="fas fa-graduation-cap" style="font-size:2rem; color:#4361ee;"></i><h3>Senior Wing</h3><p>9th to 12th (PCM/PCB)</p></div>
     </div>
-
-    <h2 style="color:var(--primary);">What Students Say</h2>
+    <h2 style="color:var(--primary);">Student Reviews</h2>
     <div id="reviews-container" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
-    <button onclick="loadRandomReviews()" style="background:var(--primary); border:none; color:#fff; padding:10px 25px; border-radius:50px; cursor:pointer; margin-bottom:50px; margin-top:20px; font-weight:600;">Load More Reviews</button>
-
-    <a href="https://wa.me/919506760791" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
+    <button onclick="loadRandomReviews()" style="background:var(--primary); border:none; color:#fff; padding:10px 25px; border-radius:50px; cursor:pointer; margin-bottom:50px; margin-top:20px; font-weight:600;">Load More</button>
+    <a href="https://wa.me/919876543210" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <script>
-        const names = ["Amit","Priya","Rahul","Sneha","Arif","Kavita","Arjun","Simran","Vikas","Anjali"];
+        const names = ["Amit","Priya","Rahul","Sneha","Arif"];
         const locs = ["Civil Lines","Gola Road","Naurangabad","Rajgarh","Melani"];
-        const msgs = ["Best coaching in Lakhimpur!","Teachers are very supportive.","I scored 95% in Boards.","Physics concepts are clear now.","Great environment for study."];
-
+        const msgs = ["Best coaching!","Teachers are supportive.","Scored 95% in Boards.","Physics concepts are clear.","Great environment."];
         function loadRandomReviews() {
             const container = document.getElementById('reviews-container');
             container.innerHTML = "";
