@@ -4,7 +4,10 @@ async function loadQuiz() {
     try {
         const response = await fetch('questions.json');
         allQuestions = await response.json();
-        renderQuiz('all');
+        
+        // START WITH SCIENCE BY DEFAULT (Instead of 'all')
+        renderQuiz('science');
+
     } catch (error) {
         document.getElementById('quiz-container').innerHTML = "<p style='color:red'>Error loading questions. Check JSON file.</p>";
     }
@@ -13,7 +16,7 @@ async function loadQuiz() {
 function filterSubject(subject) {
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
-        if(btn.innerText.toLowerCase() === subject || (subject === 'all' && btn.innerText === 'All')) {
+        if(btn.innerText.toLowerCase() === subject) {
             btn.classList.add('active');
         }
     });
@@ -24,12 +27,11 @@ function renderQuiz(subject) {
     const quizContainer = document.getElementById('quiz-container');
     quizContainer.innerHTML = ""; 
 
-    const filteredQuestions = subject === 'all' 
-        ? allQuestions 
-        : allQuestions.filter(q => q.subject === subject);
+    // Filter questions based on subject tag
+    const filteredQuestions = allQuestions.filter(q => q.subject === subject);
 
     if(filteredQuestions.length === 0) {
-        quizContainer.innerHTML = "<p style='text-align:center'>No questions available.</p>";
+        quizContainer.innerHTML = "<p style='text-align:center; padding:20px; color:#888;'>No questions added for " + subject.toUpperCase() + " yet.</p>";
         document.getElementById('submit-btn').style.display = 'none';
         return;
     }
@@ -41,8 +43,8 @@ function renderQuiz(subject) {
         questionDiv.classList.add('question-block');
         questionDiv.id = `q-block-${index}`;
         
-        // ADDED: Chapter Tag Display
-        const chapterTag = `<span style="background:#e9ecef; color:#555; font-size:0.7rem; padding:3px 8px; border-radius:4px; font-weight:bold; margin-bottom:5px; display:inline-block;">${q.chapter.toUpperCase()}</span>`;
+        // Chapter Tag
+        const chapterTag = `<span style="background:#e9ecef; color:#555; font-size:0.7rem; padding:3px 8px; border-radius:4px; font-weight:bold; margin-bottom:8px; display:inline-block;">${q.chapter ? q.chapter.toUpperCase() : 'GENERAL'}</span>`;
 
         questionDiv.innerHTML = `
             ${chapterTag}
