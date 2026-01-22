@@ -1,28 +1,22 @@
-let allQuestions = []; // Store all questions here
+let allQuestions = [];
 
 async function loadQuiz() {
     try {
         const response = await fetch('questions.json');
         allQuestions = await response.json();
-        
-        // Load ALL questions by default
         renderQuiz('all');
-
     } catch (error) {
         document.getElementById('quiz-container').innerHTML = "<p style='color:red'>Error loading questions. Check JSON file.</p>";
     }
 }
 
 function filterSubject(subject) {
-    // 1. Update Buttons Design
     document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
         if(btn.innerText.toLowerCase() === subject || (subject === 'all' && btn.innerText === 'All')) {
             btn.classList.add('active');
         }
     });
-
-    // 2. Render the chosen subject
     renderQuiz(subject);
 }
 
@@ -30,13 +24,12 @@ function renderQuiz(subject) {
     const quizContainer = document.getElementById('quiz-container');
     quizContainer.innerHTML = ""; 
 
-    // Filter questions based on subject tag
     const filteredQuestions = subject === 'all' 
         ? allQuestions 
         : allQuestions.filter(q => q.subject === subject);
 
     if(filteredQuestions.length === 0) {
-        quizContainer.innerHTML = "<p style='text-align:center'>No questions available for this subject yet.</p>";
+        quizContainer.innerHTML = "<p style='text-align:center'>No questions available.</p>";
         document.getElementById('submit-btn').style.display = 'none';
         return;
     }
@@ -48,7 +41,11 @@ function renderQuiz(subject) {
         questionDiv.classList.add('question-block');
         questionDiv.id = `q-block-${index}`;
         
+        // ADDED: Chapter Tag Display
+        const chapterTag = `<span style="background:#e9ecef; color:#555; font-size:0.7rem; padding:3px 8px; border-radius:4px; font-weight:bold; margin-bottom:5px; display:inline-block;">${q.chapter.toUpperCase()}</span>`;
+
         questionDiv.innerHTML = `
+            ${chapterTag}
             <h3>${index + 1}. ${q.question}</h3>
             <div class="options">
                 ${q.options.map(option => `
@@ -65,7 +62,6 @@ function renderQuiz(subject) {
         quizContainer.appendChild(questionDiv);
     });
 
-    // Update Submit Button Logic for the new filtered list
     document.getElementById('submit-btn').onclick = () => calculateScore(filteredQuestions);
 }
 
@@ -94,5 +90,4 @@ function calculateScore(questions) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     document.getElementById('submit-btn').style.display = 'none';
 }
-
 loadQuiz();
