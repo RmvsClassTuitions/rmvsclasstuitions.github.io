@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Modern Theme Reused */
         :root { --primary: #4361ee; --secondary: #3f37c9; --bg-color: #f8f9fa; --card-bg: #ffffff; --text-dark: #2b2d42; --shadow: 0 10px 20px rgba(0,0,0,0.08); }
         body { background-color: var(--bg-color); color: var(--text-dark); font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
         
@@ -17,18 +16,9 @@
 
         h1 { color: var(--primary); margin-top: 40px; font-weight: 700; }
 
-        /* Store Card Style */
         .product-card {
-            background: #fff;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 15px 0;
-            max-width: 600px;
-            width: 90%;
-            display: flex; justify-content: space-between; align-items: center;
-            box-shadow: var(--shadow);
-            border: 1px solid #f1f3f5;
-            transition: 0.3s;
+            background: #fff; border-radius: 15px; padding: 25px; margin: 15px 0; max-width: 600px; width: 90%;
+            display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); border: 1px solid #f1f3f5; transition: 0.3s;
         }
         .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.12); }
         .product-card h3 { margin: 0 0 5px 0; font-size: 1.1rem; color: #333; }
@@ -38,64 +28,32 @@
         .original-price { color: #aaa; text-decoration: line-through; font-size: 0.9rem; margin-right: 5px; }
         .current-price { color: var(--primary); font-size: 1.4rem; font-weight: 700; }
         
-        button.buy-btn {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 10px 25px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 8px;
-            font-family: 'Poppins';
-            transition: 0.2s;
-        }
+        button.buy-btn { background: var(--primary); color: #fff; border: none; padding: 10px 25px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 8px; font-family: 'Poppins'; transition: 0.2s; }
         button.buy-btn:hover { background: var(--secondary); transform: scale(1.05); }
-
-        /* Badge */
         .discount-badge { background: #ef233c; color: white; font-size: 0.7rem; padding: 3px 8px; border-radius: 4px; vertical-align: middle; margin-left: 5px; }
 
-        /* Modal */
         #payment-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); justify-content: center; align-items: center; z-index: 200; }
         .modal-content { background: #fff; padding: 40px; text-align: center; border-radius: 20px; max-width: 400px; width: 85%; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
         
         .float-whatsapp { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-        .float-whatsapp:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
-
     <nav>
         <a href="index.html">📝 Quiz</a>
         <a href="store.html" class="active">🛍️ Store</a>
         <a href="freenotes.html">📚 Notes</a>
         <a href="about.html">🏫 About</a>
     </nav>
-
     <h1>Study Material Store</h1>
-
     <div class="product-card">
-        <div>
-            <h3>Physics Formula Sheet <span class="discount-badge">HOT</span></h3>
-            <p>Complete Class 12 Formulas (PDF)</p>
-        </div>
-        <div class="price-container">
-            <div><span class="original-price">₹99</span><span class="current-price">₹29</span></div>
-            <button class="buy-btn" onclick="openPayment('Physics Sheet', 29)">Buy Now</button>
-        </div>
+        <div><h3>Physics Formula Sheet <span class="discount-badge">HOT</span></h3><p>Complete Class 12 Formulas (PDF)</p></div>
+        <div class="price-container"><div><span class="original-price">₹99</span><span class="current-price">₹29</span></div><button class="buy-btn" onclick="openPayment('Physics Sheet', 29)">Buy Now</button></div>
     </div>
-
     <div class="product-card">
-        <div>
-            <h3>PCM Complete Bundle</h3>
-            <p>Physics + Chemistry + Maths Notes</p>
-        </div>
-        <div class="price-container">
-            <div><span class="original-price">₹499</span><span class="current-price">₹99</span></div>
-            <button class="buy-btn" onclick="openPayment('PCM Bundle', 99)">Buy Now</button>
-        </div>
+        <div><h3>PCM Complete Bundle</h3><p>Physics + Chemistry + Maths Notes</p></div>
+        <div class="price-container"><div><span class="original-price">₹499</span><span class="current-price">₹99</span></div><button class="buy-btn" onclick="openPayment('PCM Bundle', 99)">Buy Now</button></div>
     </div>
-
     <div id="payment-modal">
         <div class="modal-content">
             <h2 style="color:var(--primary)">Confirm Order</h2>
@@ -106,12 +64,10 @@
             <button onclick="document.getElementById('payment-modal').style.display='none'" style="background:transparent; color:#999; border:none; margin-top:15px; cursor:pointer;">Cancel</button>
         </div>
     </div>
-
-    <a href="https://wa.me/919506760791" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
+    <a href="https://wa.me/919876543210" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
     <script>
-        const upiID = "rmv009@oksbi"; 
-        const myWhatsApp = "919506760791"; 
+        const upiID = "yourname@oksbi"; 
+        const myWhatsApp = "919876543210"; 
         let currentProduct = "";
         function openPayment(productName, amount) {
             currentProduct = productName;
@@ -120,9 +76,7 @@
             document.getElementById('pay-amount').innerText = `Pay: ₹${amount}`;
             document.getElementById('payment-modal').style.display = 'flex';
         }
-        function openWhatsApp() {
-            window.open(`https://wa.me/${myWhatsApp}?text=${encodeURIComponent("I paid for " + currentProduct + ". Here is the screenshot.")}`, '_blank');
-        }
+        function openWhatsApp() { window.open(`https://wa.me/${myWhatsApp}?text=${encodeURIComponent("I paid for " + currentProduct + ". Here is the screenshot.")}`, '_blank'); }
     </script>
 </body>
 </html>
