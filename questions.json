@@ -1,92 +1,56 @@
 [
-  {
-    "id": 1,
-    "subject": "science",
-    "chapter": "Chemical Reactions",
-    "question": "Which of the following is a balanced chemical equation?",
-    "options": ["H2 + O2 -> H2O", "2H2 + O2 -> 2H2O", "Mg + O2 -> MgO", "Fe + Cl2 -> FeCl3"],
-    "answer": "2H2 + O2 -> 2H2O",
-    "explanation": "This equation has equal numbers of Hydrogen and Oxygen atoms on both sides."
-  },
-  {
-    "id": 2,
-    "subject": "science",
-    "chapter": "Life Processes",
-    "question": "The kidneys in human beings are a part of the system for:",
-    "options": ["Nutrition", "Respiration", "Excretion", "Transportation"],
-    "answer": "Excretion",
-    "explanation": "Kidneys filter blood and produce urine."
-  },
-  {
-    "id": 3,
-    "subject": "maths",
-    "chapter": "Real Numbers",
-    "question": "The HCF of 96 and 404 is:",
-    "options": ["4", "2", "6", "8"],
-    "answer": "4",
-    "explanation": "Using prime factorization, 4 is the common factor."
-  },
-  {
-    "id": 4,
-    "subject": "maths",
-    "chapter": "Trigonometry",
-    "question": "The value of sin 60° cos 30° + sin 30° cos 60° is:",
-    "options": ["0", "1", "2", "1/2"],
-    "answer": "1",
-    "explanation": "Using formula sin(A+B), sin(90) = 1."
-  },
-  {
-    "id": 5,
-    "subject": "english",
-    "chapter": "Letter to God",
-    "question": "Lencho wrote a letter to ______.",
-    "options": ["God", "Postmaster", "His friend", "The Mayor"],
-    "answer": "God",
-    "explanation": "Lencho wrote a letter to God asking for 100 pesos."
-  },
-  {
-    "id": 6,
-    "subject": "english",
-    "chapter": "Tenses",
-    "question": "I ______ (finish) my work just now.",
-    "options": ["have finished", "had finished", "finished", "finishing"],
-    "answer": "have finished",
-    "explanation": "'Just now' indicates Present Perfect Tense."
-  },
-  {
-    "id": 7,
-    "subject": "sst",
-    "chapter": "History",
-    "question": "Who was the first President of India?",
-    "options": ["Nehru", "Gandhi", "Dr. Rajendra Prasad", "Ambedkar"],
-    "answer": "Dr. Rajendra Prasad",
-    "explanation": "Dr. Rajendra Prasad was the first President."
-  },
-  {
-    "id": 8,
-    "subject": "sst",
-    "chapter": "Geography",
-    "question": "Which soil is best for cotton cultivation?",
-    "options": ["Red Soil", "Black Soil", "Alluvial Soil", "Laterite Soil"],
-    "answer": "Black Soil",
-    "explanation": "Black soil is also known as Regur soil and is ideal for cotton."
-  },
-  {
-    "id": 9,
-    "subject": "hindi",
-    "chapter": "Poetry",
-    "question": "रश्मिरथी के रचयिता कौन हैं?",
-    "options": ["दिनकर", "निराला", "पंत", "प्रसाद"],
-    "answer": "दिनकर",
-    "explanation": "रामधारी सिंह 'दिनकर' ने रश्मिरथी लिखी है।"
-  },
-  {
-    "id": 10,
-    "subject": "hindi",
-    "chapter": "Grammar",
-    "question": "‘कमल’ का पर्यायवाची शब्द है:",
-    "options": ["पंकज", "जलद", "दिनकर", "अनिल"],
-    "answer": "पंकज",
-    "explanation": "पंकज का अर्थ है कीचड़ में जन्म लेने वाला (कमल)।"
-  }
+  { "id": 1, "subject": "science", "chapter": "Chemical Rxn", "question": "Burning of Magnesium ribbon is?", "options": ["Physical Change", "Chemical Change", "Both", "None"], "answer": "Chemical Change", "explanation": "It forms a new substance MgO." },
+  { "id": 2, "subject": "science", "chapter": "Acids", "question": "pH of pure water is?", "options": ["0", "14", "7", "1"], "answer": "7", "explanation": "Pure water is neutral." },
+  { "id": 3, "subject": "science", "chapter": "Light", "question": "Mirror formula is?", "options": ["1/v + 1/u = 1/f", "1/v - 1/u = 1/f", "v + u = f", "None"], "answer": "1/v + 1/u = 1/f", "explanation": "Standard mirror formula." },
+  { "id": 4, "subject": "science", "chapter": "Life Proc", "question": "Xylem transports?", "options": ["Water", "Food", "Amino Acids", "Oxygen"], "answer": "Water", "explanation": "Xylem transports water from roots." },
+  { "id": 5, "subject": "science", "chapter": "Metals", "question": "Which metal is liquid at room temp?", "options": ["Na", "Hg", "Fe", "Au"], "answer": "Hg", "explanation": "Mercury is liquid." },
+  { "id": 6, "subject": "science", "chapter": "Human Eye", "question": "Near point of human eye?", "options": ["25cm", "25m", "Infinity", "10cm"], "answer": "25cm", "explanation": "Least distance of distinct vision." },
+  { "id": 7, "subject": "science", "chapter": "Electricity", "question": "Unit of Current?", "options": ["Volt", "Ampere", "Ohm", "Watt"], "answer": "Ampere", "explanation": "SI unit of current." },
+  { "id": 8, "subject": "science", "chapter": "Magnetic Eff", "question": "Inside a solenoid, field is?", "options": ["Zero", "Uniform", "Non-uniform", "Increases"], "answer": "Uniform", "explanation": "Field lines are parallel." },
+  { "id": 9, "subject": "science", "chapter": "Environment", "question": "Which is biodegradable?", "options": ["Plastic", "Glass", "Peels", "Iron"], "answer": "Peels", "explanation": "Vegetable peels decompose." },
+  { "id": 10, "subject": "science", "chapter": "Carbon", "question": "Covalent bond involves?", "options": ["Transfer", "Sharing", "Taking", "None"], "answer": "Sharing", "explanation": "Sharing of electrons." },
+  
+  { "id": 11, "subject": "maths", "chapter": "Real No", "question": "HCF of 26 and 91?", "options": ["13", "26", "7", "182"], "answer": "13", "explanation": "13 divides both." },
+  { "id": 12, "subject": "maths", "chapter": "Poly", "question": "Degree of quadratic poly?", "options": ["1", "2", "3", "0"], "answer": "2", "explanation": "Highest power is 2." },
+  { "id": 13, "subject": "maths", "chapter": "Trig", "question": "Sin 30 value?", "options": ["0", "1", "1/2", "root3/2"], "answer": "1/2", "explanation": "Standard value." },
+  { "id": 14, "subject": "maths", "chapter": "AP", "question": "10th term of 2, 7, 12...?", "options": ["47", "50", "45", "52"], "answer": "47", "explanation": "a+9d = 2+45 = 47." },
+  { "id": 15, "subject": "maths", "chapter": "Triangles", "question": "BPT is also known as?", "options": ["Pythagoras", "Thales", "Newton", "Euclid"], "answer": "Thales", "explanation": "Thales Theorem." },
+  { "id": 16, "subject": "maths", "chapter": "Circles", "question": "Tangents from ext point are?", "options": ["Equal", "Unequal", "Parallel", "Perpendicular"], "answer": "Equal", "explanation": "Theorem 10.2." },
+  { "id": 17, "subject": "maths", "chapter": "Area Circle", "question": "Area of circle?", "options": ["2πr", "πr²", "πd", "lb"], "answer": "πr²", "explanation": "Standard formula." },
+  { "id": 18, "subject": "maths", "chapter": "Stats", "question": "Mode is?", "options": ["Middle", "Most Frequent", "Average", "Range"], "answer": "Most Frequent", "explanation": "Highest frequency." },
+  { "id": 19, "subject": "maths", "chapter": "Prob", "question": "Prob of impossible event?", "options": ["1", "0", "0.5", "-1"], "answer": "0", "explanation": "Cannot happen." },
+  { "id": 20, "subject": "maths", "chapter": "Coord Geom", "question": "Distance of (3,4) from origin?", "options": ["3", "4", "5", "7"], "answer": "5", "explanation": "root(3^2 + 4^2) = 5." },
+
+  { "id": 21, "subject": "english", "chapter": "Letter to God", "question": "Who read the letter?", "options": ["Lencho", "Postmaster", "God", "Wife"], "answer": "Postmaster", "explanation": "The fat, amiable fellow." },
+  { "id": 22, "subject": "english", "chapter": "Nelson Mandela", "question": "Mandela became first Black...?", "options": ["PM", "President", "King", "Minister"], "answer": "President", "explanation": "First Black President of SA." },
+  { "id": 23, "subject": "english", "chapter": "Flying", "question": "Seagull was afraid to?", "options": ["Run", "Swim", "Fly", "Eat"], "answer": "Fly", "explanation": "Conquered fear of flying." },
+  { "id": 24, "subject": "english", "chapter": "Anne Frank", "question": "Diary name?", "options": ["Kitty", "Puppy", "Tom", "Jerry"], "answer": "Kitty", "explanation": "Named her diary Kitty." },
+  { "id": 25, "subject": "english", "chapter": "Glimpses", "question": "Bread is famous in?", "options": ["Coorg", "Goa", "Assam", "Delhi"], "answer": "Goa", "explanation": "Portuguese tradition." },
+  { "id": 26, "subject": "english", "chapter": "Tenses", "question": "He ___ to school daily.", "options": ["go", "goes", "going", "gone"], "answer": "goes", "explanation": "Simple Present." },
+  { "id": 27, "subject": "english", "chapter": "Modals", "question": "___ I come in?", "options": ["May", "Can", "Will", "Shall"], "answer": "May", "explanation": "Formal permission." },
+  { "id": 28, "subject": "english", "chapter": "Voice", "question": "Passive: I write a letter.", "options": ["A letter is written by me", "A letter was written", "Letter wrote me", "None"], "answer": "A letter is written by me", "explanation": "Object + is/am/are + V3." },
+  { "id": 29, "subject": "english", "chapter": "Dust of Snow", "question": "What fell on poet?", "options": ["Rain", "Snow", "Leaves", "Dust"], "answer": "Snow", "explanation": "Dust of snow." },
+  { "id": 30, "subject": "english", "chapter": "Tiger in Zoo", "question": "Tiger stares at?", "options": ["Cars", "Stars", "Guards", "Visitors"], "answer": "Stars", "explanation": "Brilliant stars." },
+
+  { "id": 31, "subject": "sst", "chapter": "History", "question": "Civil Disobedience started in?", "options": ["1920", "1930", "1942", "1947"], "answer": "1930", "explanation": "Dandi March." },
+  { "id": 32, "subject": "sst", "chapter": "History", "question": "Who wrote Vande Mataram?", "options": ["Tagore", "Chatterjee", "Gandhi", "Nehru"], "answer": "Chatterjee", "explanation": "Bankim Chandra." },
+  { "id": 33, "subject": "sst", "chapter": "Geog", "question": "Black soil is good for?", "options": ["Rice", "Wheat", "Cotton", "Tea"], "answer": "Cotton", "explanation": "Cotton soil." },
+  { "id": 34, "subject": "sst", "chapter": "Geog", "question": "Rabi crop example?", "options": ["Rice", "Wheat", "Maize", "Cotton"], "answer": "Wheat", "explanation": "Winter crop." },
+  { "id": 35, "subject": "sst", "chapter": "Civics", "question": "Democracy is rule of?", "options": ["King", "Military", "People", "Few"], "answer": "People", "explanation": "By the people." },
+  { "id": 36, "subject": "sst", "chapter": "Civics", "question": "How many lists in Constitution?", "options": ["2", "3", "4", "5"], "answer": "3", "explanation": "Union, State, Concurrent." },
+  { "id": 37, "subject": "sst", "chapter": "Econ", "question": "Primary sector involves?", "options": ["Agriculture", "Industry", "Service", "IT"], "answer": "Agriculture", "explanation": "Natural resources." },
+  { "id": 38, "subject": "sst", "chapter": "Econ", "question": "GDP means?", "options": ["Gross Domestic Product", "Good Product", "General Product", "None"], "answer": "Gross Domestic Product", "explanation": "Total value." },
+  { "id": 39, "subject": "sst", "chapter": "History", "question": "Print culture started in?", "options": ["India", "China", "Japan", "Europe"], "answer": "China", "explanation": "First printing." },
+  { "id": 40, "subject": "sst", "chapter": "Geog", "question": "Resource present but not used?", "options": ["Potential", "Developed", "Stock", "Reserve"], "answer": "Potential", "explanation": "Example: Solar in Rajasthan." },
+
+  { "id": 41, "subject": "hindi", "chapter": "Surdas", "question": "Surdas ke guru?", "options": ["Vallabhacharya", "Ramanand", "Kabir", "Tulsidas"], "answer": "Vallabhacharya", "explanation": "Guru of Surdas." },
+  { "id": 42, "subject": "hindi", "chapter": "Ram-Laxman", "question": "Parshuram kiske bhakt the?", "options": ["Ram", "Shiv", "Vishnu", "Krishna"], "answer": "Shiv", "explanation": "Shiv Dhanush." },
+  { "id": 43, "subject": "hindi", "chapter": "Grammar", "question": "Kamal ka paryayvachi?", "options": ["Pankaj", "Anil", "Bhanu", "Dhara"], "answer": "Pankaj", "explanation": "Pankaj means Lotus." },
+  { "id": 44, "subject": "hindi", "chapter": "Grammar", "question": "Neelkanth mein samas?", "options": ["Bahubrihi", "Dwand", "Digu", "Tatpurush"], "answer": "Bahubrihi", "explanation": "Neela hai kanth jiska (Shiv)." },
+  { "id": 45, "subject": "hindi", "chapter": "Mata ka Anchal", "question": "Lekhak ka naam?", "options": ["Shivpujan Sahay", "Premchand", "Nirala", "Pant"], "answer": "Shivpujan Sahay", "explanation": "Writer." },
+  { "id": 46, "subject": "hindi", "chapter": "Neta ji", "question": "Chashma kaun badalta tha?", "options": ["Captain", "Halder", "Panwala", "Bachcha"], "answer": "Captain", "explanation": "Captain Chashmewala." },
+  { "id": 47, "subject": "hindi", "chapter": "Balgobin", "question": "Bhagat kisko mante the?", "options": ["Kabir", "Tulsi", "Sur", "Mira"], "answer": "Kabir", "explanation": "Kabir Das." },
+  { "id": 48, "subject": "hindi", "chapter": "Grammar", "question": "Agni ka tadbhav?", "options": ["Aag", "Anal", "Pawak", "Hotru"], "answer": "Aag", "explanation": "Hindi form." },
+  { "id": 49, "subject": "hindi", "chapter": "Grammar", "question": "Muhavra: 9-2-11 hona", "options": ["Bhag jana", "Ana", "Ladhna", "Sona"], "answer": "Bhag jana", "explanation": "To run away." },
+  { "id": 50, "subject": "hindi", "chapter": "Sana Sana", "question": "Lekhika kahan gayi thi?", "options": ["Gangtok", "Delhi", "Mumbai", "Agra"], "answer": "Gangtok", "explanation": "Sikkim travelogue." }
 ]
