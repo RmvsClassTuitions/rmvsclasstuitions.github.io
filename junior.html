@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMVS Junior Wing 🎨</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Comic Neue', cursive; background: #FFF4E6; margin: 0; padding: 20px; text-align: center; }
+        .back-btn { position: fixed; top: 20px; left: 20px; background: #FF9F1C; color: white; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 5px 0 #e08e1a; }
+        
+        h1 { color: #FF9F1C; font-size: 2.5rem; text-shadow: 2px 2px 0px #FFBF69; }
+        
+        .game-card { background: white; max-width: 500px; margin: 20px auto; padding: 20px; border-radius: 20px; border: 3px solid #FF9F1C; box-shadow: 0 10px 0 rgba(0,0,0,0.1); }
+        
+        /* MAGIC SLATE */
+        #canvas { border: 2px dashed #ccc; cursor: crosshair; background: #fff; touch-action: none; border-radius: 10px; }
+        .colors { margin-top: 10px; display: flex; justify-content: center; gap: 10px; }
+        .color-dot { width: 30px; height: 30px; border-radius: 50%; cursor: pointer; border: 2px solid #ddd; }
+        
+        /* MATHS RACER */
+        #math-q { font-size: 3rem; color: #2EC4B6; font-weight: bold; margin: 20px 0; }
+        .ans-input { font-size: 1.5rem; padding: 10px; width: 100px; text-align: center; border: 2px solid #ccc; border-radius: 10px; font-family: 'Comic Neue'; }
+        .check-btn { background: #2EC4B6; border: none; padding: 10px 20px; color: white; font-size: 1.2rem; border-radius: 10px; cursor: pointer; margin-left: 10px; box-shadow: 0 5px 0 #209a8e; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+
+    <h1>Welcome Juniors! 🎈</h1>
+
+    <div class="game-card">
+        <h2 style="color:#2EC4B6;">🏎️ Maths Racer</h2>
+        <div id="math-q">5 + 3 = ?</div>
+        <input type="number" id="math-ans" class="ans-input" placeholder="?">
+        <button class="check-btn" onclick="checkMath()">Go!</button>
+        <p id="math-msg" style="font-size:1.2rem; font-weight:bold; height:20px;"></p>
+        <p>Score: <span id="score">0</span></p>
+    </div>
+
+    <div class="game-card">
+        <h2 style="color:#FF9F1C;">🎨 Magic Slate</h2>
+        <p>Draw anything with your finger!</p>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <div class="colors">
+            <div class="color-dot" style="background:red;" onclick="ctx.strokeStyle='red'"></div>
+            <div class="color-dot" style="background:blue;" onclick="ctx.strokeStyle='blue'"></div>
+            <div class="color-dot" style="background:green;" onclick="ctx.strokeStyle='green'"></div>
+            <div class="color-dot" style="background:black;" onclick="ctx.strokeStyle='black'"></div>
+            <div class="color-dot" style="background:white; border:2px solid #333" onclick="ctx.strokeStyle='white'; ctx.lineWidth=20;">🧼</div>
+        </div>
+    </div>
+
+    <script>
+        // MATHS RACER LOGIC
+        let n1, n2, score = 0;
+        function newMath() {
+            n1 = Math.floor(Math.random() * 10) + 1;
+            n2 = Math.floor(Math.random() * 10) + 1;
+            document.getElementById('math-q').innerText = `${n1} + ${n2} = ?`;
+            document.getElementById('math-ans').value = '';
+        }
+        function checkMath() {
+            let ans = parseInt(document.getElementById('math-ans').value);
+            let msg = document.getElementById('math-msg');
+            if(ans === n1 + n2) {
+                score++; msg.innerText = "Correct! 🎉"; msg.style.color = "green";
+                setTimeout(newMath, 1000);
+            } else {
+                msg.innerText = "Try Again! ❌"; msg.style.color = "red";
+            }
+            document.getElementById('score').innerText = score;
+        }
+        newMath();
+
+        // CANVAS DRAWING LOGIC
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let painting = false;
+        ctx.lineWidth = 5; ctx.lineCap = 'round';
+
+        function startPos(e) { painting = true; draw(e); }
+        function endPos() { painting = false; ctx.beginPath(); }
+        function draw(e) {
+            if (!painting) return;
+            e.preventDefault();
+            const rect = canvas.getBoundingClientRect();
+            let x = (e.clientX || e.touches[0].clientX) - rect.left;
+            let y = (e.clientY || e.touches[0].clientY) - rect.top;
+            ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y);
+        }
+
+        canvas.addEventListener('mousedown', startPos);
+        canvas.addEventListener('mouseup', endPos);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchstart', startPos);
+        canvas.addEventListener('touchend', endPos);
+        canvas.addEventListener('touchmove', draw);
+    </script>
+</body>
+</html>
