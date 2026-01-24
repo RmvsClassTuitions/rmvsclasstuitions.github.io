@@ -10,43 +10,38 @@
         :root { --primary: #4361ee; --secondary: #3f37c9; --accent: #ff006e; --bg: #f8f9fa; --text: #2b2d42; }
         body { font-family: 'Poppins', sans-serif; margin: 0; padding: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        /* 1. MARQUEE BANNER */
+        /* MARQUEE */
         .marquee-container { background: var(--accent); color: white; padding: 10px; font-weight: 700; font-size: 0.9rem; text-align: center; }
 
-        /* 2. NAVIGATION BAR (Standard for all pages) */
+        /* NAVIGATION */
         nav { background: white; padding: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 100; flex-wrap: wrap; }
         nav a { color: var(--text); text-decoration: none; font-weight: 600; padding: 8px 15px; border-radius: 50px; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover, nav a.active { background: var(--primary); color: white; transform: translateY(-2px); }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero { background: white; padding: 40px 20px; text-align: center; border-radius: 0 0 30px 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         .hero h1 { margin: 0; color: var(--primary); font-size: 2rem; }
         .hero p { color: #666; margin-top: 5px; }
 
-        /* SECTIONS GRID */
+        /* GRID LAYOUT */
         .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 90%; max-width: 900px; margin: 30px auto; }
         .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .full-width { grid-column: span 2; }
-
-        /* UPDATES BOARD */
         .notice-board { border-left: 5px solid var(--primary); }
         .notice-item { border-bottom: 1px solid #eee; padding: 10px 0; font-size: 0.9rem; }
 
-        /* FUN & JUNIOR WING */
+        /* BUTTONS & INPUTS */
         .wing-btn { display: block; width: 100%; padding: 15px; margin-top: 10px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: white; font-size: 1rem; transition: 0.3s; text-align: center; text-decoration: none; }
         .junior-bg { background: linear-gradient(135deg, #ff9f1c, #ffbf69); }
-        .senior-bg { background: linear-gradient(135deg, #4361ee, #4cc9f0); }
         .wing-btn:hover { transform: scale(1.02); }
-
-        /* DOUBT BOX */
+        
         .doubt-input { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
         .whatsapp-btn { background: #25D366; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; width: 100%; font-weight: bold; }
 
-        /* LOCATION & SOCIAL */
+        /* MAP & SOCIAL */
         .map-frame { width: 100%; height: 200px; border: 0; border-radius: 10px; margin-top: 10px; }
         .social-row { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
         .social-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
-        .social-icon:hover { transform: translateY(-3px); }
 
         /* CHATBOT */
         #chatbot-btn { position: fixed; bottom: 20px; right: 20px; background: var(--primary); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; cursor: pointer; box-shadow: 0 10px 30px rgba(67, 97, 238, 0.4); z-index: 1000; animation: float 3s infinite; }
@@ -56,9 +51,9 @@
         .bot-msg { background: #e0fbfc; padding: 10px 15px; border-radius: 15px 15px 15px 0; margin-bottom: 10px; color: #333; font-size: 0.9rem; }
         .user-option { display: block; width: 100%; padding: 10px; margin-top: 5px; border: 1px solid var(--primary); color: var(--primary); background: white; border-radius: 50px; cursor: pointer; font-size: 0.85rem; }
 
+        .ad-space { width: 90%; max-width: 700px; height: 90px; background: #eee; margin: 20px auto; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
         @media (max-width: 768px) { .section-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
         @keyframes float { 0% {transform: translateY(0px);} 50% {transform: translateY(-10px);} 100% {transform: translateY(0px);} }
-        .ad-space { width: 90%; max-width: 700px; height: 90px; background: #eee; margin: 20px auto; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
     </style>
 </head>
 <body>
@@ -95,65 +90,29 @@
             <div class="notice-item">🎉 <strong>Result:</strong> Aman scored 98% in Pre-Boards!</div>
         </div>
 
-      <div class="card">
-    <h3 style="margin-top:0;">🎮 Student Corner</h3>
-    
-    <a href="junior.html" class="wing-btn junior-bg"><i class="fas fa-child"></i> Junior Wing Games (Nursery-8th)</a>
-    
-    <div style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
-        <strong><i class="fas fa-heart" style="color:#ff006e;"></i> Bestie Meter:</strong>
-        
-        <div style="display:flex; gap:5px; margin-top:5px;">
-            <input type="text" id="n1" placeholder="Your Name" style="width:45%; padding:8px; border:1px solid #ddd; border-radius:5px;">
-            <span style="align-self:center;">+</span>
-            <input type="text" id="n2" placeholder="Friend" style="width:45%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+        <div class="card">
+            <h3 style="margin-top:0;">🎮 Student Corner</h3>
+            
+            <a href="junior.html" class="wing-btn junior-bg"><i class="fas fa-child"></i> Junior Wing Games</a>
+            
+            <div style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
+                <strong><i class="fas fa-heart" style="color:#ff006e;"></i> Bestie Meter:</strong>
+                
+                <div style="display:flex; gap:5px; margin-top:5px;">
+                    <input type="text" id="n1" placeholder="Your Name" style="width:45%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+                    <span style="align-self:center;">+</span>
+                    <input type="text" id="n2" placeholder="Friend" style="width:45%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+                </div>
+
+                <button onclick="calcLove()" style="background:#ff006e; color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-top:10px; width:100%; font-weight:bold;">Check Score</button>
+                
+                <div id="love-res" style="font-size:1rem; font-weight:bold; color:#ff006e; margin-top:10px; text-align:center;"></div>
+                
+                <button id="share-btn" onclick="shareResult()" style="display:none; background:#25D366; color:white; border:none; padding:8px 15px; border-radius:50px; cursor:pointer; margin-top:5px; width:100%; font-weight:bold;">
+                    <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                </button>
+            </div>
         </div>
-
-        <button onclick="calcLove()" style="background:#ff006e; color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-top:10px; width:100%; font-weight:bold;">Check Score</button>
-        
-        <div id="love-res" style="font-size:1rem; font-weight:bold; color:#ff006e; margin-top:10px; text-align:center;"></div>
-        
-        <button id="share-btn" onclick="shareResult()" style="display:none; background:#25D366; color:white; border:none; padding:8px 15px; border-radius:50px; cursor:pointer; margin-top:5px; width:100%; font-weight:bold;">
-            <i class="fab fa-whatsapp"></i> Share on WhatsApp
-        </button>
-    </div>
-</div>
-
-<script>
-    // Existing Chatbot & Toggle functions remain...
-
-    // NEW FRIENDSHIP LOGIC
-    function calcLove() {
-        const name1 = document.getElementById('n1').value;
-        const name2 = document.getElementById('n2').value;
-        
-        if(!name1 || !name2) {
-            alert("Please enter both names!");
-            return;
-        }
-
-        // Generate random score between 65% and 100% (High scores make people happy!)
-        const score = Math.floor(Math.random() * 35) + 65; 
-        
-        // Show Result
-        document.getElementById('love-res').innerText = `${name1} + ${name2} = ${score}% Besties! ❤️`;
-        
-        // Show Share Button
-        document.getElementById('share-btn').style.display = 'block';
-    }
-
-    function shareResult() {
-        const name1 = document.getElementById('n1').value;
-        const name2 = document.getElementById('n2').value;
-        const score = document.getElementById('love-res').innerText;
-        
-        // The Viral Message
-        const message = `OMG! 🤣 ${score} Check your friendship score here: https://rmvsclasstuitions.github.io`;
-        
-        // Open WhatsApp
-        window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
-    }
-</script>
 
         <div class="card full-width">
             <h3 style="margin-top:0; color:#25D366;"><i class="fab fa-whatsapp"></i> Ask Rajeev Sir</h3>
@@ -198,17 +157,42 @@
     </div>
 
     <script>
+        // CHATBOT LOGIC
         function toggleChat() {
             const chat = document.getElementById('chatbot-window');
             chat.style.display = chat.style.display === 'block' ? 'none' : 'block';
         }
+
+        // WHATSAPP DOUBT LOGIC
         function sendDoubt() {
             const txt = document.getElementById('doubt-msg').value;
             if(txt) window.open(`https://wa.me/919506760791?text=${encodeURIComponent("Doubt: "+txt)}`);
         }
+
+        // FRIENDSHIP & SHARE LOGIC
         function calcLove() {
-            const s = Math.floor(Math.random()*40)+60;
-            if(document.getElementById('n1').value) document.getElementById('love-res').innerText = `Friendship: ${s}% ❤️`;
+            const name1 = document.getElementById('n1').value;
+            const name2 = document.getElementById('n2').value;
+            
+            if(!name1 || !name2) {
+                alert("Please enter both names!");
+                return;
+            }
+
+            // Generate Score 65-100%
+            const score = Math.floor(Math.random() * 35) + 65; 
+            
+            // Show Result
+            document.getElementById('love-res').innerText = `${name1} + ${name2} = ${score}% Besties! ❤️`;
+            
+            // SHOW THE SHARE BUTTON (Change display from none to block)
+            document.getElementById('share-btn').style.display = 'block';
+        }
+
+        function shareResult() {
+            const score = document.getElementById('love-res').innerText;
+            const message = `OMG! 🤣 ${score} Check your friendship score here: https://rmvsclasstuitions.github.io`;
+            window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
