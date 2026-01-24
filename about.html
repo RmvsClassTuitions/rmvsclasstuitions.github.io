@@ -3,59 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About RMVS</title>
+    <title>RMVS | About</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #4361ee; --bg-color: #f8f9fa; --card-bg: #ffffff; }
-        body { background-color: var(--bg-color); color: #333; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
-        
-        nav { background: #fff; width: 100%; padding: 15px 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; gap: 15px; position: sticky; top: 0; z-index: 100; }
-        nav a { color: #333; text-decoration: none; font-weight: 600; padding: 8px 18px; border-radius: 50px; background: #f1f3f5; font-size: 0.9rem; }
-        nav a:hover, nav a.active { background: var(--primary); color: #fff; }
-
-        .hero { text-align: center; margin-top: 40px; width: 90%; max-width: 800px; }
-        h1 { color: var(--primary); font-weight: 700; margin-bottom: 5px; }
-        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 90%; max-width: 800px; margin-bottom: 50px; margin-top: 30px; }
-        .service-card { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center; transition: 0.3s; }
-        .service-card:hover { transform: translateY(-5px); }
-        .review-card { background: #fff; padding: 20px; margin-bottom: 15px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 90%; max-width: 600px; border-left: 5px solid #FFD700; }
-        .stars { color: #FFD700; margin-bottom: 5px; }
-        .float-whatsapp { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); display: flex; align-items: center; justify-content: center; }
+        body { font-family: 'Poppins', sans-serif; background: #f8f9fa; margin: 0; padding: 0; text-align: center; }
+        nav { background: white; width: 100%; padding: 15px 0; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        nav a { color: #333; text-decoration: none; font-weight: 600; padding: 8px 15px; border-radius: 50px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover, nav a.active { background: #4361ee; color: white; }
+        .hero { margin-top: 40px; }
+        .review-card { background: white; width: 90%; max-width: 500px; margin: 15px auto; padding: 20px; border-radius: 10px; box-shadow: 0 5px 10px rgba(0,0,0,0.05); border-left: 5px solid #FFD700; text-align: left; }
     </style>
 </head>
 <body>
     <nav>
-        <a href="index.html">📝 Quiz</a>
-        <a href="store.html">🛍️ Store</a>
-        <a href="freenotes.html">📚 Notes</a>
-        <a href="about.html" class="active">🏫 About</a>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="quiz.html"><i class="fas fa-edit"></i> Quiz</a>
+        <a href="store.html"><i class="fas fa-shopping-bag"></i> Store</a>
+        <a href="notes.html"><i class="fas fa-book"></i> Notes</a>
+        <a href="about.html" class="active"><i class="fas fa-user"></i> About</a>
     </nav>
+
     <div class="hero">
-        <h1>RMVS Class Tuitions</h1>
-        <p style="color:#666; font-weight:600;"><i class="fas fa-map-marker-alt" style="color:#ef233c;"></i> Lakhimpur Kheri, UP</p>
+        <h1 style="color:#4361ee;">Rajeev Mohan Verma</h1>
+        <p>Founder, RMVS Class Tuitions</p>
+        <p style="color:#666;">Empowering students of Lakhimpur Kheri since 2015.</p>
     </div>
-    <div class="services-grid">
-        <div class="service-card"><i class="fas fa-child" style="font-size:2rem; color:#4361ee;"></i><h3>Junior Wing</h3><p>Nursery to 8th</p></div>
-        <div class="service-card"><i class="fas fa-graduation-cap" style="font-size:2rem; color:#4361ee;"></i><h3>Senior Wing</h3><p>9th to 12th (PCM/PCB)</p></div>
+
+    <h2 style="color:#4361ee; margin-top:50px;">Student Love ❤️</h2>
+    <div class="review-card"><strong>Aman (Class 10):</strong> "Sir's Maths notes are the best!"</div>
+    <div class="review-card"><strong>Priya (Class 12):</strong> "Physics concepts became so easy."</div>
+    <div class="review-card"><strong>Rahul (Class 9):</strong> "Daily Quiz helps me revise everyday."</div>
+    
+    <div style="margin: 50px 0;">
+        <a href="https://wa.me/919506760791" style="background:#25D366; color:white; padding:15px 30px; text-decoration:none; border-radius:50px; font-weight:bold;">Contact Sir on WhatsApp</a>
     </div>
-    <h2 style="color:var(--primary);">Student Reviews</h2>
-    <div id="reviews-container" style="width:100%; display:flex; flex-direction:column; align-items:center;"></div>
-    <button onclick="loadRandomReviews()" style="background:var(--primary); border:none; color:#fff; padding:10px 25px; border-radius:50px; cursor:pointer; margin-bottom:50px; margin-top:20px; font-weight:600;">Load More</button>
-    <a href="https://wa.me/919876543210" class="float-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <script>
-        const names = ["Amit","Priya","Rahul","Sneha","Arif"];
-        const locs = ["Civil Lines","Gola Road","Naurangabad","Rajgarh","Melani"];
-        const msgs = ["Best coaching!","Teachers are supportive.","Scored 95% in Boards.","Physics concepts are clear.","Great environment."];
-        function loadRandomReviews() {
-            const container = document.getElementById('reviews-container');
-            container.innerHTML = "";
-            for(let i=0; i<5; i++) {
-                const rN=names[Math.floor(Math.random()*names.length)], rL=locs[Math.floor(Math.random()*locs.length)], rM=msgs[Math.floor(Math.random()*msgs.length)];
-                container.innerHTML += `<div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div>"${rM}"</div><div style="font-weight:bold; color:#333; margin-top:5px;">- ${rN}</div><div style="font-size:0.8rem; color:#888;">${rL}</div></div>`;
-            }
-        }
-        loadRandomReviews();
-    </script>
 </body>
 </html>
