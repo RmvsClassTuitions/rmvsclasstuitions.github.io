@@ -95,17 +95,65 @@
             <div class="notice-item">🎉 <strong>Result:</strong> Aman scored 98% in Pre-Boards!</div>
         </div>
 
-        <div class="card">
-            <h3 style="margin-top:0;">🎮 Student Corner</h3>
-            <a href="junior.html" class="wing-btn junior-bg"><i class="fas fa-child"></i> Junior Wing Games (Nursery-8th)</a>
-            <div style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
-                <strong><i class="fas fa-heart" style="color:#ff006e;"></i> Bestie Meter:</strong>
-                <input type="text" id="n1" placeholder="You" style="width:30%; padding:5px;"> + 
-                <input type="text" id="n2" placeholder="Friend" style="width:30%; padding:5px;">
-                <button onclick="calcLove()" style="background:#ff006e; color:white; border:none; padding:5px 10px; border-radius:5px; cursor:pointer;">Go</button>
-                <div id="love-res" style="font-size:0.8rem; font-weight:bold; color:#ff006e; margin-top:5px;"></div>
-            </div>
+      <div class="card">
+    <h3 style="margin-top:0;">🎮 Student Corner</h3>
+    
+    <a href="junior.html" class="wing-btn junior-bg"><i class="fas fa-child"></i> Junior Wing Games (Nursery-8th)</a>
+    
+    <div style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
+        <strong><i class="fas fa-heart" style="color:#ff006e;"></i> Bestie Meter:</strong>
+        
+        <div style="display:flex; gap:5px; margin-top:5px;">
+            <input type="text" id="n1" placeholder="Your Name" style="width:45%; padding:8px; border:1px solid #ddd; border-radius:5px;">
+            <span style="align-self:center;">+</span>
+            <input type="text" id="n2" placeholder="Friend" style="width:45%; padding:8px; border:1px solid #ddd; border-radius:5px;">
         </div>
+
+        <button onclick="calcLove()" style="background:#ff006e; color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; margin-top:10px; width:100%; font-weight:bold;">Check Score</button>
+        
+        <div id="love-res" style="font-size:1rem; font-weight:bold; color:#ff006e; margin-top:10px; text-align:center;"></div>
+        
+        <button id="share-btn" onclick="shareResult()" style="display:none; background:#25D366; color:white; border:none; padding:8px 15px; border-radius:50px; cursor:pointer; margin-top:5px; width:100%; font-weight:bold;">
+            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+        </button>
+    </div>
+</div>
+
+<script>
+    // Existing Chatbot & Toggle functions remain...
+
+    // NEW FRIENDSHIP LOGIC
+    function calcLove() {
+        const name1 = document.getElementById('n1').value;
+        const name2 = document.getElementById('n2').value;
+        
+        if(!name1 || !name2) {
+            alert("Please enter both names!");
+            return;
+        }
+
+        // Generate random score between 65% and 100% (High scores make people happy!)
+        const score = Math.floor(Math.random() * 35) + 65; 
+        
+        // Show Result
+        document.getElementById('love-res').innerText = `${name1} + ${name2} = ${score}% Besties! ❤️`;
+        
+        // Show Share Button
+        document.getElementById('share-btn').style.display = 'block';
+    }
+
+    function shareResult() {
+        const name1 = document.getElementById('n1').value;
+        const name2 = document.getElementById('n2').value;
+        const score = document.getElementById('love-res').innerText;
+        
+        // The Viral Message
+        const message = `OMG! 🤣 ${score} Check your friendship score here: https://rmvsclasstuitions.github.io`;
+        
+        // Open WhatsApp
+        window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+    }
+</script>
 
         <div class="card full-width">
             <h3 style="margin-top:0; color:#25D366;"><i class="fab fa-whatsapp"></i> Ask Rajeev Sir</h3>
