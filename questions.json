@@ -1,5 +1,4 @@
 [
- [
   { "id": 101, "subject": "science", "chapter": "Chemical Rxn", "question": "Which gas is evolved when dilute HCl reacts with Zinc?", "options": ["Oxygen", "Hydrogen", "Chlorine", "Nitrogen"], "answer": "Hydrogen", "explanation": "Metals react with acids to release Hydrogen gas." },
   { "id": 102, "subject": "science", "chapter": "Chemical Rxn", "question": "Respiration is an example of which reaction?", "options": ["Endothermic", "Exothermic", "Decomposition", "Reduction"], "answer": "Exothermic", "explanation": "Respiration releases energy." },
   { "id": 103, "subject": "science", "chapter": "Acids Bases", "question": "Tomato contains which acid?", "options": ["Acetic acid", "Citric acid", "Oxalic acid", "Tartaric acid"], "answer": "Oxalic acid", "explanation": "Tomatoes are a natural source of oxalic acid." },
@@ -50,7 +49,7 @@
   { "id": 148, "subject": "science", "chapter": "Chemical Rxn", "question": "Rusting of iron is called?", "options": ["Corrosion", "Rancidity", "Reduction", "Displacement"], "answer": "Corrosion", "explanation": "Oxidation of metals." },
   { "id": 149, "subject": "science", "chapter": "Carbon", "question": "First member of Alkyne series?", "options": ["Methane", "Ethene", "Ethyne", "Propypne"], "answer": "Ethyne", "explanation": "C2H2 (Acetylene)." },
   { "id": 150, "subject": "science", "chapter": "Our Env", "question": "Flow of energy in ecosystem is?", "options": ["Unidirectional", "Bidirectional", "Multidirectional", "Cyclic"], "answer": "Unidirectional", "explanation": "Sun -> Plants -> Consumers." }
-] 
+ 
   { "id": 11, "subject": "maths", "chapter": "Real No", "question": "HCF of 26 and 91?", "options": ["13", "26", "7", "182"], "answer": "13", "explanation": "13 divides both." },
   { "id": 12, "subject": "maths", "chapter": "Poly", "question": "Degree of quadratic poly?", "options": ["1", "2", "3", "0"], "answer": "2", "explanation": "Highest power is 2." },
   { "id": 13, "subject": "maths", "chapter": "Trig", "question": "Sin 30 value?", "options": ["0", "1", "1/2", "root3/2"], "answer": "1/2", "explanation": "Standard value." },
