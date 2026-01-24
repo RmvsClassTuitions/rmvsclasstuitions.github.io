@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMVS | Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Poppins', sans-serif; background: #f8f9fa; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; }
+        
+        /* STANDARD NAV */
+        nav { background: white; width: 100%; padding: 15px 0; display: flex; justify-content: center; gap: 10px; position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        nav a { color: #333; text-decoration: none; font-weight: 600; padding: 8px 15px; border-radius: 50px; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover, nav a.active { background: #4361ee; color: white; }
+
+        .container { width: 90%; max-width: 800px; margin-top: 30px; }
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
+        .tab-btn { background: #e9ecef; border: none; padding: 8px 20px; border-radius: 50px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: #4361ee; color: white; }
+        
+        .question-block { background: white; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #4361ee; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .options label { display: block; padding: 10px; margin: 5px 0; background: #f8f9fa; border-radius: 5px; cursor: pointer; }
+        input[type="radio"] { margin-right: 10px; }
+        .explanation { background: #e0fbfc; padding: 10px; margin-top: 10px; border-radius: 5px; display: none; color: #0077b6; }
+        #submit-btn { width: 100%; padding: 15px; background: #4361ee; color: white; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; margin-bottom: 50px; }
+        #result { text-align: center; padding: 20px; background: white; border-radius: 15px; margin-bottom: 20px; display: none; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="quiz.html" class="active"><i class="fas fa-edit"></i> Quiz</a>
+        <a href="store.html"><i class="fas fa-shopping-bag"></i> Store</a>
+        <a href="notes.html"><i class="fas fa-book"></i> Notes</a>
+        <a href="about.html"><i class="fas fa-user"></i> About</a>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align:center; color:#4361ee;">Daily Practice Series</h1>
+        <div class="tabs">
+            <button class="tab-btn active" onclick="filterSubject('science')">Science</button>
+            <button class="tab-btn" onclick="filterSubject('maths')">Maths</button>
+            <button class="tab-btn" onclick="filterSubject('english')">English</button>
+            <button class="tab-btn" onclick="filterSubject('sst')">SST</button>
+            <button class="tab-btn" onclick="filterSubject('hindi')">Hindi</button>
+        </div>
+        <div id="quiz-container"><p style="text-align:center;">Loading Questions...</p></div>
+        <button id="submit-btn">Submit Test</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
