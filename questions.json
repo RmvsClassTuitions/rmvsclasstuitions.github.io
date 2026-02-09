@@ -1,45 +1,38 @@
-{
-    "id": 101,
+[
+  {
+    "id": 1,
     "subject": "science",
     "chapter": "Chemical Reactions",
-    "question": "Which gas is released when zinc reacts with dilute sulfuric acid? <br> <span style='color:#e65100; font-size:0.9em;'>जिंक की सल्फ्यूरिक अम्ल से क्रिया कराने पर कौन सी गैस निकलती है?</span>",
-    "options": ["Oxygen", "Hydrogen", "Nitrogen", "Carbon Dioxide"],
-    "answer": "Hydrogen",
-    "explanation": "Metals react with acids to release Hydrogen gas."
+    "question": "Which gas is released when zinc reacts with acid? <br><br> <span style='color:#e65100'>जिंक की अम्ल से क्रिया पर कौन सी गैस निकलती है?</span>",
+    "options": ["Oxygen (ऑक्सीजन)", "Hydrogen (हाइड्रोजन)", "Nitrogen (नाइट्रोजन)", "Chlorine (क्लोरिन)"],
+    "answer": "Hydrogen (हाइड्रोजन)",
+    "explanation": "Metals release Hydrogen gas with acids."
   },
   {
-    "id": 102,
+    "id": 2,
     "subject": "science",
     "chapter": "Light",
-    "question": "What is the SI unit of Power of Lens? <br> <span style='color:#e65100; font-size:0.9em;'>लेंस की क्षमता का SI मात्रक क्या है?</span>",
-    "options": ["Meter", "Watt", "Diopter", "Candela"],
-    "answer": "Diopter",
-    "explanation": "Power of lens is measured in Diopters (D)."
+    "question": "SI unit of Power of Lens? <br><br> <span style='color:#e65100'>लेंस की क्षमता का SI मात्रक?</span>",
+    "options": ["Meter (मीटर)", "Watt (वाट)", "Diopter (डायोप्टर)", "Candela (कैंडेला)"],
+    "answer": "Diopter (डायोप्टर)",
+    "explanation": "Measured in Diopters (D)."
   },
   {
-    "id": 103,
-    "subject": "science",
-    "chapter": "Human Eye",
-    "question": "Which part of the eye controls the amount of light entering it? <br> <span style='color:#e65100; font-size:0.9em;'>आँख का कौन सा भाग आँख में प्रवेश करने वाले प्रकाश की मात्रा को नियंत्रित करता है?</span>",
-    "options": ["Retina", "Iris", "Cornea", "Pupil"],
-    "answer": "Iris",
-    "explanation": "The Iris expands or contracts to control the pupil size."
+    "id": 21,
+    "subject": "maths",
+    "chapter": "Trigonometry",
+    "question": "Value of sin(30°)? <br><br> <span style='color:#e65100'>sin(30°) का मान है?</span>",
+    "options": ["1", "1/2", "√3/2", "0"],
+    "answer": "1/2",
+    "explanation": "From the trig table."
   },
   {
-    "id": 104,
-    "subject": "science",
-    "chapter": "Acids Bases",
-    "question": "What is the pH value of pure water? <br> <span style='color:#e65100; font-size:0.9em;'>शुद्ध जल का pH मान क्या होता है?</span>",
-    "options": ["0", "7", "14", "1"],
-    "answer": "7",
-    "explanation": "Pure water is neutral, so its pH is 7."
-  },
-  {
-    "id": 105,
-    "subject": "science",
-    "chapter": "Life Processes",
-    "question": "In which part of the body does complete digestion of food take place? <br> <span style='color:#e65100; font-size:0.9em;'>भोजन का पूर्ण पाचन शरीर के किस भाग में होता है?</span>",
-    "options": ["Stomach", "Large Intestine", "Small Intestine", "Mouth"],
-    "answer": "Small Intestine",
-    "explanation": "Final digestion happens in the small intestine."
+    "id": 61,
+    "subject": "sst",
+    "chapter": "History",
+    "question": "When was Jallianwala Bagh massacre? <br><br> <span style='color:#e65100'>जलियांवाला बाग हत्याकांड कब हुआ?</span>",
+    "options": ["1919", "1920", "1921", "1922"],
+    "answer": "1919",
+    "explanation": "April 13, 1919."
   }
+]
